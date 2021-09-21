@@ -26,6 +26,7 @@ public class AgendaTelefonica
             //Menu principal
             Console.WriteLine("------Agenda------");
             int op = 0;
+            Console.Clear();
             Console.WriteLine(
                 "Escolha uma das opções abaixo\n" +
                 "1- Busca por primeiro nome\n" +
@@ -169,7 +170,44 @@ public class AgendaTelefonica
             }
             if (op == 6) //Remover um contato
             {
+                Console.Write("Dígite o nome do contato: ");
+                string buscar_nome = Console.ReadLine();
+                int i = 0;
+                for (i = 0; i < tl; i++)
+                {
+                    if (primeiroNome[i] == buscar_nome)
+                    {
+                        Console.Write("Código: " + codigo[i] +
+                            " Nome Completo: " + primeiroNome[i] + " " + sobrenome[i] +
+                            " Tipo de contato: " + tipoDeContato[i] +
+                            " Telefone: " + telefone[i] +
+                            " Email: " + email[i]);
+                        Console.WriteLine();
+                    }
+                    /// Caso não encontre deve executar (Contato não localizado)
+                    break;
+                }
+                Console.Write("");
+                Console.Write("Qual o código do contato: ");
+                int buscar_codigo = Convert.ToInt32(Console.ReadLine());
+                for (i = 0; i < tl; i++)
+                {
+                    if (codigo[i] == buscar_codigo)
+                    {
+                        codigo[i] = codigo[i + 1];
+                        primeiroNome[i] = primeiroNome[i + 1];
+                        sobrenome[i] = sobrenome[i + 1];
+                        tipoDeContato[i] = tipoDeContato[i + 1];
+                        telefone[i] = telefone[i + 1];
+                        email[i] = email[i + 1];
+                        bairro[i] = bairro[i + 1];
+                        cidade[i] = cidade[i + 1];
+                        dataDeNascimento[i] = dataDeNascimento[i + 1];
+                    }
+                    tl--;
+                    /// Caso não encontre deve executar (Contato não localizado)
 
+                }
             }
             if (op == 7) //Listar contatos
             {
@@ -190,8 +228,9 @@ public class AgendaTelefonica
 
             }
             Console.ReadKey();
+
         }
-    
+
 
     }
 }
