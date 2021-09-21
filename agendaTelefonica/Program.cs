@@ -15,10 +15,8 @@ public class AgendaTelefonica
         string[] estado = new string[100];
         string[] dataDeNascimento = new string [100];
         int[] codigo = new int[100];
-        
-        DateTime data = new DateTime(2008, 4, 10);
-        
-        int tl = 0, lastcod = 0, op = 0;
+
+        int tl = 0, lastcod  = 0, op = 0;
 
 
         static int ExibeMenu()
@@ -43,6 +41,8 @@ public class AgendaTelefonica
         //Se escolher 3 tenho que fazer um if para colocar cada tipo de contato?
         //A opção 5 (Se a lista de contato estiver cheia - Mensagem ("Agenta cheia")
 
+
+
         while (op != 8)
         {
             op = ExibeMenu();
@@ -60,23 +60,19 @@ public class AgendaTelefonica
                             " Tipo de contato: " + tipoDeContato[i] +
                             " Telefone: " + telefone[i] +
                             " Email: " + email[i]);
-                        Console.WriteLine();
+                        Console.WriteLine(); 
                     }
-                    /// Caso não encontre deve executar (Contato não localizado)
-                    /// 
-                    else Console.Write("Contato não localizado");
-                    
                 }
-                
+
             }
-            if(op == 2) //Buscar por nome completo
+            if (op == 2) //Buscar por nome completo
             {
                 Console.WriteLine("Dígite o nome completo: ");
                 string buscar_nomeCompleto = Console.ReadLine();
                 int i = 0;
                 for (i = 0; i < tl; i++)
                 {
-                    if (primeiroNome[i] + sobrenome[i] == buscar_nomeCompleto)
+                    if (primeiroNome[i] + " " + sobrenome[i] == buscar_nomeCompleto)
                     {
                         Console.Write("Código: " + codigo[i] +
                             " Nome Completo: " + primeiroNome[i] + " " + sobrenome[i] +
@@ -89,7 +85,7 @@ public class AgendaTelefonica
 
                 }
             }
-            if(op == 3) //Buscar por tipo de contato
+            if (op == 3) //Buscar por tipo de contato
             {
                 Console.WriteLine("Dígite o tipo de contato: ");
                 string buscar_tipoDeContato = Console.ReadLine();
@@ -138,7 +134,7 @@ public class AgendaTelefonica
                 String p_sobrenome = Console.ReadLine();
                 Console.WriteLine("Tipo de contato: \n" + "Celular, Trabalho, Casa, Principal, Pager, Fax Trabalho, Fax Casa ou Outro");
                 String p_tipoContato = Console.ReadLine();
-                Console.WriteLine("Telefone: ");
+                Console.WriteLine("Telefone: " + "(00)00000-0000");
                 String p_telefone = Console.ReadLine();
                 Console.WriteLine("Email: ");
                 String p_email = Console.ReadLine();
@@ -149,7 +145,7 @@ public class AgendaTelefonica
                 String p_cidade = Console.ReadLine();
                 Console.WriteLine ("Estado: ");
                 String p_estado = Console.ReadLine();
-                Console.WriteLine("Data de nascimento: " + data.ToString("dd/MM/yyyy"));
+                Console.WriteLine("Data de nascimento: " + "12/09/2002");
                 String p_dataDeNascimento = Console.ReadLine();
 
 
@@ -170,7 +166,7 @@ public class AgendaTelefonica
             }
             if (op == 6) //Remover um contato
             {
-                Console.Write("Dígite o nome do contato: ");
+                Console.WriteLine("Dígite o nome: ");
                 string buscar_nome = Console.ReadLine();
                 int i = 0;
                 for (i = 0; i < tl; i++)
@@ -184,8 +180,6 @@ public class AgendaTelefonica
                             " Email: " + email[i]);
                         Console.WriteLine();
                     }
-                    /// Caso não encontre deve executar (Contato não localizado)
-                    break;
                 }
                 Console.Write("");
                 Console.Write("Qual o código do contato: ");
